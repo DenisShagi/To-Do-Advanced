@@ -49,7 +49,7 @@ function createUserOption(user) {
 function removeTodo(todoId) {
   todos = todos.filter((todo) => todo.id !== todoId);
 
-  const todo = todoList.querySelector(`[data-id='${todoId}']`);
+  const todo = todoList.querySelector(`[data-id="${todoId}"]`);
   todo.querySelector("input").removeEventListener("change", handleTodoChange);
   todo.querySelector(".close").removeEventListener("click", handleClose);
 
@@ -144,6 +144,8 @@ async function deleteTodo(todoId) {
       },
     }
   );
+
   if (response.ok) {
+    removeTodo(todoId)
   }
 }
