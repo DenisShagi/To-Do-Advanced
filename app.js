@@ -46,6 +46,15 @@ function createUserOption(user) {
   userSelect.append(option);
 }
 
+function removeTodo(todoId) {
+  todos = todos.filter((todo) => todo.id !== todoId);
+
+  const todo = todoList.querySelector(`[data-id='${todoId}']`);
+  todo.querySelector("input").removeEventListener("change", handleTodoChange);
+  todo.querySelector(".close").removeEventListener("click", handleClose);
+
+  todo.remove();
+}
 // Event Logic
 
 function initApp() {
@@ -135,7 +144,6 @@ async function deleteTodo(todoId) {
       },
     }
   );
-  if(response.ok){
-    
+  if (response.ok) {
   }
 }
